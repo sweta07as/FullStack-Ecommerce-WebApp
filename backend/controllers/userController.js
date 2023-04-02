@@ -6,18 +6,24 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 
 const crypto = require("crypto");
+const cloudinary = require("cloudinary");
 
 //Register a User
 exports.registerUser = asyncError(async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
 
+  const { name, email, password } = req.body;
   const user = await User.create({
     name,
     email,
     password,
     avatar: {
-      public_id: "This is a sample id",
-      url: "profilepicUrl",
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
     },
   });
 
@@ -248,6 +254,6 @@ exports.deleteUser = asyncError(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    message: "User deleted successfully"
+    message: "User deleted successfully",
   });
 });
