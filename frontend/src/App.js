@@ -20,6 +20,7 @@ import UpdateProfile from "./component/User/UpdateProfile";
 import UpdatePassword from "./component/User/UpdatePassword";
 import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword.js";
+import Cart from "./component/Cart/Cart.js";
 //removed .js from all of the above ones to make it look cool
 //but if you have error, please add it
 
@@ -54,11 +55,13 @@ function App() {
         path="/password/update"
         component={UpdatePassword}
       />
-      
+
       <Route exact path="/password/forgot" component={ForgotPassword} />
       <Route exact path="/password/reset/:token" component={ResetPassword} />
 
       <Route exact path="/login" component={LoginSignUp} />
+
+      <Route exact path="/cart" component={Cart} />
 
       <Footer />
     </Router>

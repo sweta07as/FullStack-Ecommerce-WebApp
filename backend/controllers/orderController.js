@@ -108,7 +108,7 @@ exports.updateOrder = asyncError(async (req, res, next) => {
 async function updateStock(id, quantity) {
   const product = await Product.findById(id);
 
-  product.stock -= quantity;
+  product.stock -= quantity; //used small s in stock
 
   await product.save({ validateBeforeSave: false });
 }
