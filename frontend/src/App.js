@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import Header from "./component/layout/Header/Header";
+import Navbar from "./component/layout/Navbar/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
@@ -58,7 +58,7 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Navbar />
       {isAuthenticated && <UserOptions user={user} />}
       <Route exact path="/" component={Home} />
       <Route exact path="/product/:id" component={ProductDetails} />

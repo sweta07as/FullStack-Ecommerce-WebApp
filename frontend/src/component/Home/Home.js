@@ -32,14 +32,12 @@ const Home = () => {
           <MetaData title="FabTokri" />
 
           <div className="banner">
-            <p>Welcome to Fabtokri</p>
-            <h1>Find clothes below</h1>
-
+{/* 
             <a href="#container">
               <button>
                 Scroll <CgMouse />
               </button>
-            </a>
+            </a> */}
           </div>
 
           <h2 className="homeHeading">Featured Products</h2>
