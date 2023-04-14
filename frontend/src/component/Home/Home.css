@@ -93,13 +93,8 @@
   justify-content: flex-start;
   align-items: center;
 }
-/* 
-.productCardSpan {
-  margin: 0.5vmax;
-  font: 300 0.7vmax "Roboto";
-} */
 
-.productCard > div > span {
+.productCardSpan {
   margin: 0.5vmax;
   font: 300 0.7vmax "Roboto";
 }

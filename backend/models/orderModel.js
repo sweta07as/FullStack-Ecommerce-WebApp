@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
-      name: {
+      image: {
         type: String,
         required: true,
       },
@@ -36,7 +36,7 @@ const orderSchema = new mongoose.Schema({
   ],
   user: {
     type: mongoose.Schema.ObjectId,
-    ref: "Product",
+    ref: "User",
     required: true,
   },
   paymentInfo:{

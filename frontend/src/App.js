@@ -29,6 +29,8 @@ import Payment from "./component/Cart/Payment.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
+import MyOrders from "./component/Order/MyOrders.js";
+import OrderDetails from "./component/Order/OrderDetails.js"
 
 //removed .js from all of the above ones to make it look cool
 //but if you have error, please add it
@@ -92,6 +94,10 @@ function App() {
       )}
 
       <ProtectedRoute exact path="/success" component={OrderSuccess} />
+
+      <ProtectedRoute exact path="/orders" component={MyOrders} />
+
+      <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
 
       <Footer />
     </Router>
