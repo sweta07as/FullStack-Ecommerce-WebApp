@@ -30,7 +30,12 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
 import MyOrders from "./component/Order/MyOrders.js";
-import OrderDetails from "./component/Order/OrderDetails.js"
+import OrderDetails from "./component/Order/OrderDetails.js";
+import Dashboard from "./component/Admin/Dashboard.js";
+import ProductList from "./component/Admin/ProductList.js";
+import NewProduct from "./component/Admin/NewProduct.js";
+import UpdateProduct from "./component/Admin/UpdateProduct.js";
+import OrderList from "./component/Admin/OrderList.js";
 
 //removed .js from all of the above ones to make it look cool
 //but if you have error, please add it
@@ -98,6 +103,41 @@ function App() {
       <ProtectedRoute exact path="/orders" component={MyOrders} />
 
       <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
+
+      <ProtectedRoute
+        isAdmin={true}
+        exact
+        path="/admin/dashboard"
+        component={Dashboard}
+      />
+
+      <ProtectedRoute
+        exact
+        isAdmin={true}
+        path="/admin/products"
+        component={ProductList}
+      />
+
+      <ProtectedRoute
+        exact
+        isAdmin={true}
+        path="/admin/product"
+        component={NewProduct}
+      />
+
+      <ProtectedRoute
+        exact
+        isAdmin={true}
+        path="/admin/product/:id"
+        component={UpdateProduct}
+      />
+
+      <ProtectedRoute
+        exact
+        isAdmin={true}
+        path="/admin/orders"
+        component={OrderList}
+      />
 
       <Footer />
     </Router>
