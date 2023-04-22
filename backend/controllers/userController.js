@@ -183,7 +183,7 @@ exports.updateProfile = asyncError(async (req, res, next) => {
   };
 
   //if uncommented, then name and email update not works
-  // if commented, image update not works 
+  // if commented, image update not works
   // if (req.body.avatar !== "") {
   //   const user = await User.findById(req.user.id);
   //   const imageId = user.avatar.public_id;
@@ -246,7 +246,7 @@ exports.updateUserRole = asyncError(async (req, res, next) => {
     role: req.body.role,
   };
 
-  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+  await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
@@ -261,13 +261,15 @@ exports.updateUserRole = asyncError(async (req, res, next) => {
 exports.deleteUser = asyncError(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
-  //We will remove cloudinary later
-
   if (!user) {
     return next(
       new ErrorHandler(`User does not exist with id: ${req.params.id}`)
     );
   }
+
+  //To remove image from cloudinary (not needed so comment these two lines)
+  // const imageId = user.avatar.public_id;
+  // await cloudinary.v2.uploader.destroy(imageId);
 
   await user.remove();
 

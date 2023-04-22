@@ -86,7 +86,9 @@ const ProductList = ({ history }) => {
             </Link>
 
             <Button
-              onClick={() => deleteProductHandler(params.getValue(params.id, "id"))}
+              onClick={() =>
+                deleteProductHandler(params.getValue(params.id, "id"))
+              }
             >
               <DeleteIcon />
             </Button>
