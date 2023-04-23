@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import CheckoutSteps from "./CheckoutSteps";
+import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/Metadata";
 import "./ConfirmOrder.css";
