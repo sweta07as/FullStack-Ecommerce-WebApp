@@ -36,6 +36,10 @@ const ProductDetails = ({ match }) => {
   );
 
   const options = {
+    // edit: false,
+    // color: "rgba(20,20,20,0.1)",
+    // activeColor: "rgb(128, 0, 57)",
+    // size: window.innerWidth < 600 ? 20 : 25,
     size: "large",
     value: product.ratings,
     readOnly: true,

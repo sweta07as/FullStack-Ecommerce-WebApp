@@ -1,73 +1,70 @@
+h4 {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  padding-bottom: 0.5vmax;
+}
+
 footer {
   margin-top: 10vmax;
-  padding: 2vmax;
-  background-color: rgb(34, 33, 33);
+  padding: 5vmax;
+  background-color: #707070;
   color: white;
-  display: flex;
+  display:flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.topFooter, .bottomFooter{
+  display:flex;
+  flex-direction: row;
+}
+
+.topFooter{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3vmax;
+}
+
+.bottomFooter{
+  padding: 2vmax;  
+  width: 80%;
+  justify-content: space-between;
 }
 
 .leftFooter {
-  width: 20%;
   display: flex;
-
   flex-direction: column;
-  align-items: center;
+  align-items:flex-start;
 }
-.leftFooter > h4 {
-  font-family: "Roboto";
-  font-size: 1vmax;
-}
-.leftFooter > p {
+
+.leftFooter > p, .bottomFooter > p {
   text-align: center;
   font-size: 1.2vmax;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-.leftFooter > img {
-  width: 10vmax;
-  margin: 1vmax;
-  cursor: pointer;
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.midFooter {
-  width: 60%;
-
-  text-align: center;
-}
-
-.midFooter > h1 {
-  font-size: 4vmax;
-  font-family: "Roboto";
-  color: #eb4034;
-}
-.midFooter > p {
-  max-width: 60%;
+.leftFooter > p {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin: 1vmax auto;
+  margin: 0.5vmax 0;
 }
 
-.rightFooter {
-  width: 20%;
-
+.rightFooter, .midFooter {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:flex-start;
 }
-.rightFooter > h4 {
-  font-family: "Roboto";
-  font-size: 1.4vmax;
-  text-decoration: underline;
-}
-.rightFooter > a {
+
+.rightFooter > a, .midFooter > a {
   text-decoration: none;
   font-size: 1.3vmax;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
-  transition: all 0.5s;
-  margin: 0.5vmax;
+  margin: 0.5vmax 0;
 }
 
-.rightFooter > a:hover {
-  color: #eb4034;
+.ig, .fb, .twitter{
+  color: white;
 }

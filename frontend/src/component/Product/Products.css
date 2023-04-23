@@ -59,7 +59,7 @@
 }
 
 .pageItemActive {
-  background-color: tomato;
+  background-color: rgb(128, 0, 57);
 }
 
 .pageLinkActive {
@@ -86,7 +86,7 @@
   transition: all 0.5s;
 }
 .category-link:hover {
-  color: tomato;
+  color: rgb(128, 0, 57);
 }
 
 .filterBox > fieldset {

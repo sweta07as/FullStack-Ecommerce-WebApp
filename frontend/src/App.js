@@ -73,6 +73,7 @@ function App() {
 
   return (
     <Router>
+      {/* <Navbar /> */}
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
 
