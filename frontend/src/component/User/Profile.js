@@ -1,18 +1,38 @@
 import React, { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layout/Metadata";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+import profile from "../../images/profile.png";
+import { clearErrors, logout } from "../../actions/userAction";
+import { useAlert } from "react-alert";
 
 const Profile = ({ history }) => {
-  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const alert = useAlert();
+
+  const { error, user, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+
+  const logoutSubmit = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    alert.success("Logout Successfully");
+    history.push("/login");
+  };
 
   useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
     if (isAuthenticated === false) {
       history.push("/login");
     }
-  }, [history, isAuthenticated]);
+  }, [dispatch, error, alert, history, isAuthenticated]);
 
   return (
     <Fragment>
@@ -24,7 +44,7 @@ const Profile = ({ history }) => {
           <div className="profileContainer">
             <div>
               <h1>My Profile</h1>
-              <img src={user.avatar.url} alt={user.name} />
+              <img src={profile} alt={user.name} />
               <Link to="/me/update">Edit Profile</Link>
             </div>
             <div>
@@ -43,6 +63,9 @@ const Profile = ({ history }) => {
               <div>
                 <Link to="/orders">My Orders</Link>
                 <Link to="/password/update">Change Password</Link>
+                <Link onClick={logoutSubmit}>
+                  Logout
+                </Link>
               </div>
             </div>
           </div>

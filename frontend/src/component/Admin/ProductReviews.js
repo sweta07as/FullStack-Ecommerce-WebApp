@@ -59,13 +59,13 @@ const ProductReviews = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted, productId]);
 
   const columns = [
-    { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Review ID", minWidth: 200, flex: 0 },
 
     {
       field: "user",
       headerName: "User",
       minWidth: 200,
-      flex: 0.6,
+      flex: 0,
     },
 
     { field: "comment", headerName: "Comment", minWidth: 350, flex: 1 },
@@ -75,7 +75,7 @@ const ProductReviews = ({ history }) => {
       headerName: "Rating",
       type: "number",
       minWidth: 180,
-      flex: 0.4,
+      flex: 0,
 
       cellClassName: (params) => {
         return params.getValue(params.id, "rating") >= 3
@@ -90,7 +90,7 @@ const ProductReviews = ({ history }) => {
       type: "number",
       minWidth: 150,
       sortable: false,
-      flex: 0.3,
+      flex: 0,
       renderCell: (params) => {
         return (
           <Fragment>

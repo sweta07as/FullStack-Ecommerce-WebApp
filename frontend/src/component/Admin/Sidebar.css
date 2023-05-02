@@ -5,27 +5,27 @@
   padding: 4rem 0;
 }
 
-.sidebar > a:first-child {
+/* .sidebar > a:first-child {
   padding: 0;
 }
 .sidebar > a > img {
   width: 100%;
   transition: all 0.5s;
-}
+} */
 
 /* .sidebar > a > img:hover { */
-  /* filter: drop-shadow(0 0 10px tomato); */
+/* filter: drop-shadow(0 0 10px #800039); */
 /* } */
 
 .sidebar a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.493);
-  font: 200 1rem "Roboto";
+  font: 200 1rem "Roboto Slab";
   padding: 2rem;
   transition: all 0.5s;
 }
 .sidebar a:hover {
-  color: tomato;
+  color: #800039;
   transform: scale(1.1);
 }
 

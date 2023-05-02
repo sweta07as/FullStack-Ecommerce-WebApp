@@ -50,13 +50,13 @@ const OrderList = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Order ID", minWidth: 300, flex: 0 },
 
     {
       field: "status",
       headerName: "Status",
       minWidth: 150,
-      flex: 0.5,
+      flex: 0,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
           ? "greenColor"
@@ -77,7 +77,7 @@ const OrderList = ({ history }) => {
       headerName: "Amount",
       type: "number",
       minWidth: 270,
-      flex: 0.5,
+      flex: 0,
     },
 
     {
@@ -86,7 +86,7 @@ const OrderList = ({ history }) => {
       type: "number",
       minWidth: 150,
       sortable: false,
-      flex: 0.3,
+      flex: 0,
       renderCell: (params) => {
         return (
           <Fragment>

@@ -1,15 +1,15 @@
 .newProductContainer {
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(221, 221, 221);
-  border-left: 1px solid rgba(0, 0, 0, 0.158);
+  background-color: #f3f3f3;
+  border-left: 5px solid rgba(0, 0, 0, 0.158);
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 .newProductContainer h1 {
   color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
+  font: 300 2rem "Roboto Slab";
   text-align: center;
 }
 
@@ -18,10 +18,10 @@
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 3vmax;
+  padding: 7vmax;
   justify-content: space-evenly;
-  height: 70%;
-  width: 40vh;
+  height: 90%;
+  width: 80vh;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
 }
@@ -40,7 +40,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  font: 300 0.9vmax;
   outline: none;
 }
 
@@ -63,7 +63,7 @@
   height: 5vh;
   border: none;
   margin: 0%;
-  font: 400 0.8vmax cursive;
+  font: 400 0.8vmax;
   transition: all 0.5s;
   padding: 0 1vmax;
   color: rgba(0, 0, 0, 0.623);
@@ -76,7 +76,7 @@
 
 #createProductFormImage {
   width: 100%;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 #createProductFormImage > img {
@@ -85,9 +85,9 @@
 }
 #createProductBtn {
   border: none;
-  background-color: tomato;
+  background-color: #800039;
   color: white;
-  font: 300 0.9vmax "Roboto";
+  font: 300 0.9vmax "Roboto Slab";
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -98,7 +98,7 @@
 }
 
 #createProductBtn:hover {
-  background-color: rgb(179, 66, 46);
+  background-color: #500024;
 }
 
 @media screen and (max-width: 600px) {
@@ -113,7 +113,7 @@
   .createProductForm > div > select,
   .createProductForm > div > textarea {
     padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax cursive;
+    font: 300 1.7vmax;
   }
 
   .createProductForm > div > svg {
@@ -127,11 +127,11 @@
 
   #createProductFormFile > input::file-selector-button {
     height: 7vh;
-    font: 400 1.8vmax cursive;
+    font: 400 1.8vmax;
   }
 
   #createProductBtn {
-    font: 300 1.9vmax "Roboto";
+    font: 300 1.9vmax "Roboto Slab";
     padding: 1.8vmax;
   }
 }

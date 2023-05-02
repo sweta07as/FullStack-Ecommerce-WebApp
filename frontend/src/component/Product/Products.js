@@ -66,7 +66,7 @@ const Products = ({ match }) => {
       ) : (
         <Fragment>
           <MetaData title="PRODUCTS FABTOKRI" />
-          <h2 className="productsHeading">Products</h2>
+          <h2 className="productsHeading">PRODUCTS</h2>
           <div className="products">
             {products &&
               products.map((product) => (

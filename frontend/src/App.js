@@ -1,19 +1,20 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import Header from "./component/layout/Header/Header";
+import Header from "./component/layout/Header/Header.js";
+import Navbar from "./component/layout/Navbar/Navbar.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
 import Footer from "./component/layout/Footer/Footer";
 import Home from "./component/Home/Home";
-import Loader from "./component/layout/Loader/Loader";
+// import Loader from "./component/layout/Loader/Loader";
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
 import Search from "./component/Product/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
-import UserOptions from "./component/layout/Header/UserOptions";
+import UserOptions from "./component/layout/Header/UserOptions.js";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
@@ -59,7 +60,7 @@ function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
+        families: ["Roboto Slab", "Droid Sans", "Chilanka"],
       },
     });
 
@@ -73,9 +74,10 @@ function App() {
 
   return (
     <Router>
-      {/* <Navbar /> */}
-      <Header />
-      {isAuthenticated && <UserOptions user={user} />}
+      <Navbar/>
+      {/* <Header /> */}
+
+      {/* {isAuthenticated && <UserOptions user={user} />} */}
 
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>

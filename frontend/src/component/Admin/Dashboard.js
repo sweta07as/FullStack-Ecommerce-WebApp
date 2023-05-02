@@ -43,7 +43,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: "TOTAL AMOUNT",
-        backgroundColor: ["tomato"],
+        backgroundColor: ["rgb(128, 0, 57)"],
         hoverBackgroundColor: ["rgb(197, 72, 49)"],
         data: [0, totalAmount],
       },
@@ -54,8 +54,8 @@ const Dashboard = () => {
     labels: ["Out of Stock", "InStock"],
     datasets: [
       {
-        backgroundColor: ["#00A6B4", "#6800B4"],
-        hoverBackgroundColor: ["#4B5000", "#35014F"],
+        backgroundColor: ["#707070", "#800039"],
+        hoverBackgroundColor: ["#303030", "#500024"],
         data: [outOfStock, products.length - outOfStock],
       },
     ],
@@ -66,7 +66,7 @@ const Dashboard = () => {
       <Sidebar />
 
       <div className="dashboardContainer">
-        <Typography component="h1">Dashboard</Typography>
+        <Typography component="h1">DASHBOARD</Typography>
 
         <div className="dashboardSummary">
           <div>
@@ -76,7 +76,7 @@ const Dashboard = () => {
           </div>
           <div className="dashboardSummaryBox2">
             <Link to="/admin/products">
-              <p>Product</p>
+              <p>Products</p>
               <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">

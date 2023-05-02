@@ -155,7 +155,7 @@ const ProductDetails = ({ match }) => {
                   Status:
                   <b className={product.stock < 1 ? "redColor" : "greenColor"}>
                     {/* used small s in stock */}
-                    {product.stock < 1 ? "Out Of Stock" : "In Stock"}
+                    {product.stock < 1 ? " Out Of Stock" : " In Stock"}
                   </b>
                 </p>
               </div>
@@ -196,7 +196,7 @@ const ProductDetails = ({ match }) => {
               <Button onClick={submitReviewToggle} color="secondary">
                 Cancel
               </Button>
-              <Button onClick={reviewSubmitHandler} color="primary">
+              <Button onClick={reviewSubmitHandler} color= "primary">
                 Submit
               </Button>
             </DialogActions>

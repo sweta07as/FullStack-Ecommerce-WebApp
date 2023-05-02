@@ -53,14 +53,14 @@ const ProductList = ({ history }) => {
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
 
-    { field: "name", headerName: "Name", minWidth: 350, flex: 1 },
+    { field: "name", headerName: "Name", minWidth: 300, flex: 0.6 },
 
     {
       field: "stock",
       headerName: "Stock",
       type: "number",
       minWidth: 150,
-      flex: 0.3,
+      flex: 0,
     },
 
     {
@@ -68,7 +68,7 @@ const ProductList = ({ history }) => {
       headerName: "Price",
       type: "number",
       minWidth: 270,
-      flex: 0.5,
+      flex: 0,
     },
 
     {

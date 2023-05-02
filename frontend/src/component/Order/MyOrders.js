@@ -18,13 +18,13 @@ const MyOrders = () => {
   const { user } = useSelector((state) => state.user);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Order ID", minWidth: 300, flex: 0 },
 
     {
       field: "status",
       headerName: "Status",
       minWidth: 150,
-      flex: 0.5,
+      flex: 0,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
           ? "greenColor"
@@ -37,7 +37,7 @@ const MyOrders = () => {
       headerName: "Items Qty",
       type: "number",
       minWidth: 150,
-      flex: 0.3,
+      flex: 0.1,
     },
 
     {
@@ -45,13 +45,13 @@ const MyOrders = () => {
       headerName: "Amount",
       type: "number",
       minWidth: 270,
-      flex: 0.5,
+      flex: 0,
     },
     
     {
       field: "actions",
       headerName: "Actions",
-      flex: 0.3,
+      flex: 0,
       minWidth: 150,
       type: "number",
       sortable: false,
@@ -94,6 +94,7 @@ const MyOrders = () => {
         <Loader />
       ) : (
         <div className="myOrdersPage">
+          <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
           <DataGrid
             rows={rows}
             columns={columns}
@@ -102,8 +103,6 @@ const MyOrders = () => {
             className="myOrdersTable"
             autoHeight
           />
-
-          <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
         </div>
       )}
     </Fragment>

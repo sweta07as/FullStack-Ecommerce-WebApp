@@ -47,7 +47,7 @@ const Shipping = ({ history }) => {
       <CheckoutSteps activeStep={0} /> 
       <div className="shippingContainer">
         <div className="shippingBox">
-          <h2 className="shippingHeading">Shipping Details</h2>
+          {/* <h2 className="shippingHeading">SHIPPING DETAILS</h2> */}
 
           <form
             className="shippingForm"

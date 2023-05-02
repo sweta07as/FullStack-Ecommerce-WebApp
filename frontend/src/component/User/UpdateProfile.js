@@ -107,7 +107,7 @@ const UpdateProfile = ({ history }) => {
                   />
                 </div>
 
-                <div id="updateProfileImage">
+                {/* <div id="updateProfileImage">
                   <img src={avatarPreview} alt="Avatar Preview" />
                   <input
                     type="file"
@@ -115,7 +115,7 @@ const UpdateProfile = ({ history }) => {
                     accept="image/*"
                     onChange={updateProfileDataChange}
                   />
-                </div>
+                </div> */}
                 <input
                   type="submit"
                   value="Update"
