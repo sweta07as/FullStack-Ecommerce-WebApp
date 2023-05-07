@@ -5,8 +5,9 @@ import MetaData from "../layout/Metadata";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
+import axios from "axios";
 
-const ConfirmOrder = ({ history }) => {
+const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
 
@@ -20,16 +21,39 @@ const ConfirmOrder = ({ history }) => {
   const totalPrice = shippingCharges + tax + subtotal;
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
-  const proceedToPayment = () => {
-    const data = {
-      subtotal,
-      shippingCharges,
-      tax,
-      totalPrice,
+  const checkoutHandler = async (amount) => {
+    const {
+      data: { key }
+    } = await axios.get("/api/v1/getkey");
+
+    const { data: {order} } = await axios.post("/api/v1/checkout", {
+      amount
+    });
+
+    const options = {
+      key,
+      amount: order.amount,
+      currency: "INR",
+      name: "FabTokri", //your business name
+      description: "Ecommerce Website",
+      // image: "https://example.com/your_logo", //add your logo
+      order_id: order.id,
+      callback_url: "http://localhost:4000/api/v1/paymentverification",
+      prefill: {
+        name: "Gaurav Kumar", //your customer's name
+        email: "gaurav.kumar@example.com",
+        contact: "9000090000",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#500024",
+      }, 
     };
 
-    sessionStorage.setItem("orderInfo", JSON.stringify(data));
-    history.push("/process/payment");
+    const razor = new window.Razorpay(options);
+    razor.open();
   };
 
   return (
@@ -97,7 +121,9 @@ const ConfirmOrder = ({ history }) => {
               </p>
               <span>₹{totalPrice}</span>
             </div>
-            <button onClick={proceedToPayment}>Proceed To Payment</button>
+            <button onClick={() => checkoutHandler(totalPrice)}>
+              Proceed To Payment
+            </button>
           </div>
         </div>
       </div>

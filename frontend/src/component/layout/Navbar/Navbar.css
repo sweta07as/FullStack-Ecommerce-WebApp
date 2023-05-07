@@ -115,7 +115,7 @@ img {
 @media (max-width: 600px) {
   .main-nav {
     height: 7vmax;
-    grid-template-columns: 2rem 0.6fr 2fr 2fr 2fr 2rem;
+    grid-template-columns: 1rem 0.6fr 2fr 2fr 3fr;
   }
 
   .logo {
@@ -153,7 +153,6 @@ img {
     transform-origin: top;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-
   }
 
   .mobile-menu-link ul {
@@ -173,20 +172,20 @@ img {
     cursor: pointer;
   }
 
-  .ham, .close{
+  .ham,
+  .close {
     font-size: 3vmax;
     color: #707070;
   }
 
-  .social-media{
-    grid-column: 4/6;
+  .social-media {
+    grid-column: 5/6;
   }
 
-  .social-media ul{
-     height: 7vmax;
-  justify-content: space-evenly;
+  .social-media ul {
+    height: 7vmax;
+    justify-content: space-evenly;
   }
-
 }
 
 /* 

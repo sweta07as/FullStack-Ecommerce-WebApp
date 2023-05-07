@@ -1,3 +1,5 @@
+//NO USE //WAS USED IN STRIPE
+
 import React, { Fragment, useEffect, useRef } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
@@ -63,9 +65,10 @@ const Payment = ({ history }) => {
         config
       );
 
+    
       const client_secret = data.client_secret;
 
-      if (!stripe || !elements) return;
+      // if (!stripe || !elements) return;
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
@@ -89,7 +92,6 @@ const Payment = ({ history }) => {
         alert.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          
           order.paymentInfo = {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,

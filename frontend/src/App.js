@@ -27,8 +27,6 @@ import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
 import axios from "axios";
 import Payment from "./component/Cart/Payment.js";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
 import MyOrders from "./component/Order/MyOrders.js";
 import OrderDetails from "./component/Order/OrderDetails.js";
@@ -42,20 +40,13 @@ import UsersList from "./component/Admin/UsersList";
 import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import NotFound from "./component/layout/Not Found/NotFound";
+import PaymentSuccess from "./component/Cart/PaymentSuccess";
 
 //removed .js from all of the above ones to make it look cool
 //but if you have error, please add it
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-
-  const [stripeApiKey, setStripeApiKey] = useState("");
-
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
-
-    setStripeApiKey(data.stripeApiKey);
-  }
 
   useEffect(() => {
     WebFont.load({
@@ -66,7 +57,6 @@ function App() {
 
     store.dispatch(loadUser());
 
-    getStripeApiKey();
   }, []);
 
   //prevents right click and inspect, so don't uncomment
@@ -74,16 +64,10 @@ function App() {
 
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       {/* <Header /> */}
 
       {/* {isAuthenticated && <UserOptions user={user} />} */}
-
-      {stripeApiKey && (
-        <Elements stripe={loadStripe(stripeApiKey)}>
-          <ProtectedRoute exact path="/process/payment" component={Payment} />
-        </Elements>
-      )}
 
       <Switch>
         <Route exact path="/" component={Home} />
@@ -178,6 +162,12 @@ function App() {
           isAdmin={true}
           path="/admin/reviews"
           component={ProductReviews}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/paymentsuccess"
+          component={PaymentSuccess}
         />
 
         <Route
