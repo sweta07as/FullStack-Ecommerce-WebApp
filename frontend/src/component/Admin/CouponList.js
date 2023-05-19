@@ -4,9 +4,9 @@ import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
-  getAdminProduct,
-  deleteProduct,
-} from "../../actions/productAction";
+  getAdminCoupon,
+  deleteCoupon,
+} from "../../actions/couponAction";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
@@ -14,20 +14,20 @@ import MetaData from "../layout/Metadata";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SideBar from "./Sidebar.js";
-import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+import { DELETE_COUPON_RESET } from "../../constants/couponConstants";
 
-const ProductList = ({ history }) => {
+const CouponList = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const { error, products } = useSelector((state) => state.products);
+  const { error, coupons } = useSelector((state) => state.coupons);
 
-  const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));
+  const deleteCouponHandler = (id) => {
+    dispatch(deleteCoupon(id));
   };
 
   const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.product
+    (state) => state.coupon
   );
 
   useEffect(() => {
@@ -42,32 +42,32 @@ const ProductList = ({ history }) => {
     }
 
     if (isDeleted) {
-      alert.success("Product Deleted Successfully");
-      history.push("/admin/dashboard");
-      dispatch({ type: DELETE_PRODUCT_RESET });
+      alert.success("Coupon Deleted Successfully");
+      history.push("/admin/coupons");
+      dispatch({ type: DELETE_COUPON_RESET });
     }
 
-    dispatch(getAdminProduct());
+    dispatch(getAdminCoupon());
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Coupon ID", minWidth: 300, flex: 0 },
 
-    { field: "name", headerName: "Name", minWidth: 300, flex: 0.6 },
+    { field: "name", headerName: "Name", minWidth: 250, flex: 0 },
+
+    // {
+    //   field: "expiry",
+    //   headerName: "Expiry",
+    //   type: "date",
+    //   minWidth: 200,
+    //   flex: 0,
+    // },
 
     {
-      field: "stock",
-      headerName: "Stock",
+      field: "discount",
+      headerName: "Discount",
       type: "number",
-      minWidth: 150,
-      flex: 0,
-    },
-
-    {
-      field: "price",
-      headerName: "Price",
-      type: "number",
-      minWidth: 270,
+      minWidth: 250,
       flex: 0,
     },
 
@@ -81,13 +81,13 @@ const ProductList = ({ history }) => {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
+            <Link to={`/admin/coupon/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
 
             <Button
               onClick={() =>
-                deleteProductHandler(params.getValue(params.id, "id"))
+                deleteCouponHandler(params.getValue(params.id, "id"))
               }
             >
               <DeleteIcon />
@@ -100,24 +100,24 @@ const ProductList = ({ history }) => {
 
   const rows = [];
 
-  products &&
-    products.forEach((item) => {
+  coupons &&
+    coupons.forEach((item) => {
       rows.push({
         id: item._id,
-        stock: item.stock,
-        price: item.price,
+        // expiry: item.expiry,
+        discount: item.discount,
         name: item.name,
       });
     });
 
   return (
     <Fragment>
-      <MetaData title={`ALL PRODUCTS - ADMIN`} />
+      <MetaData title={`ALL COUPONS - ADMIN`} />
 
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL PRODUCTS</h1>
+          <h1 id="productListHeading">ALL COUPONS</h1>
 
           <DataGrid
             rows={rows}
@@ -133,4 +133,4 @@ const ProductList = ({ history }) => {
   );
 };
 
-export default ProductList;
+export default CouponList;

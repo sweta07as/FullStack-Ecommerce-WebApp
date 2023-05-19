@@ -278,3 +278,15 @@ exports.deleteUser = asyncError(async (req, res, next) => {
     message: "User deleted successfully",
   });
 });
+
+//Send OTP to user
+// const userLogin = asyncError(async (req, res, next) => {
+//   //not static yet
+//   res.status(200).send({
+//     message: "OTP Sent Successfully",
+//   });
+// });
+
+// exports.otpController = {
+//   userLogin
+// };

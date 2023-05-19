@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "./Cart.css";
 import CartItemCard from "./CartItemCard.js";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,21 +19,32 @@ const Cart = ({ history }) => {
     dispatch(addItemsToCart(id, newQty));
   };
 
-  const decreaseQuantity = (id, quantity) => {
-    const newQty = quantity - 1;
-    if (1 >= quantity) {
-      return;
-    }
-    dispatch(addItemsToCart(id, newQty));
-  };
-
   const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
+  };
+
+  const decreaseQuantity = (id, quantity) => {
+    const newQty = quantity - 1;
+    if (1 > quantity) {
+      //changed
+      return;
+    }
+
+    //changed
+    if (quantity === 0) {
+      deleteCartItems(cartItems.product);
+    }
+    dispatch(addItemsToCart(id, newQty));
   };
 
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
   };
+
+  const grossTotal = cartItems.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0
+  );
 
   return (
     <Fragment>
@@ -76,6 +87,9 @@ const Cart = ({ history }) => {
                     >
                       +
                     </button>
+                    <p>
+                      {item.quantity === 0 && deleteCartItems(item.product)}
+                    </p>
                   </div>
                   <p className="cartSubtotal">{`₹${
                     item.price * item.quantity
@@ -87,10 +101,7 @@ const Cart = ({ history }) => {
               <div></div>
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
-                <p>{`₹${cartItems.reduce(
-                  (acc, item) => acc + item.quantity * item.price,
-                  0
-                )}`}</p>
+                <p>{`₹${grossTotal}`}</p>
               </div>
               <div></div>
               <div className="checkOutBtn">

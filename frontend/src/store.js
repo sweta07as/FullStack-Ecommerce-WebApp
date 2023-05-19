@@ -21,6 +21,7 @@ import {
 } from "./reducers/userReducer";
 
 import { cartReducer } from "./reducers/cartReducer";
+
 import {
   allOrdersReducer,
   myOrdersReducer,
@@ -28,6 +29,14 @@ import {
   orderDetailsReducer,
   orderReducer,
 } from "./reducers/orderReducer";
+
+import {
+  couponReducer,
+  newCouponReducer,
+  couponsReducer,
+  couponDetailsReducer,
+  applyCouponReducer,
+} from "./reducers/couponReducer";
 
 const reducer = combineReducers({
   products: productsReducer,
@@ -48,6 +57,11 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   productReviews: productReviewsReducer,
   review: reviewReducer,
+  coupon: couponReducer,
+  coupons: couponsReducer,
+  newCoupon: newCouponReducer,
+  couponDetails: couponDetailsReducer,
+  applyCoupon: applyCouponReducer,
 });
 
 let initialState = {

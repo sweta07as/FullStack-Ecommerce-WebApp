@@ -1,33 +1,74 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/Metadata";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import axios from "axios";
+import { useAlert } from "react-alert";
+
+import { applyCoupon } from "../../actions/couponAction";
+// import { APPLY_COUPON_SUCCESS } from "../../constants/couponConstants";
 
 const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const alert = useAlert();
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
-
   const shippingCharges = subtotal > 1000 ? 0 : 200;
-  const tax = subtotal * 0.18;
-  const totalPrice = shippingCharges + tax + subtotal;
+  // const tax = subtotal * 0.18;
+
+  const [couponCode, setCouponCode] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState(null);
+  const [discountAmount, setDiscountAmount] = useState(0);
+  const { success, coupon, error } = useSelector((state) => state.applyCoupon);
+
+  const totalPrice = shippingCharges + subtotal - discountAmount;
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
+
+  const handleCouponChange = (e) => {
+    setCouponCode(e.target.value);
+  };
+
+  const applyCouponHandler = async () => {
+    setAppliedCoupon(couponCode);
+    await dispatch(applyCoupon(couponCode));
+
+    if (error) {
+      setDiscountAmount(0);
+      // alert.error("Invalid Coupon");
+    }
+  };
+
+  const removeCouponHandler = () => {
+    setDiscountAmount(0);
+    if (appliedCoupon && success) {
+      setAppliedCoupon(null);
+      dispatch(applyCoupon(""));
+    }
+  };
+
+  useEffect(() => {
+    if (success) {
+      setDiscountAmount((subtotal * coupon.coupon.discount) / 100);
+    }
+  }, [success, coupon, subtotal]);
 
   const checkoutHandler = async (amount) => {
     const {
-      data: { key }
+      data: { key },
     } = await axios.get("/api/v1/getkey");
 
-    const { data: {order} } = await axios.post("/api/v1/checkout", {
-      amount
+    const {
+      data: { order },
+    } = await axios.post("/api/v1/checkout", {
+      amount,
     });
 
     const options = {
@@ -49,7 +90,7 @@ const ConfirmOrder = () => {
       },
       theme: {
         color: "#500024",
-      }, 
+      },
     };
 
     const razor = new window.Razorpay(options);
@@ -105,14 +146,35 @@ const ConfirmOrder = () => {
                 <p>Subtotal:</p>
                 <span>₹{subtotal}</span>
               </div>
+              {appliedCoupon && success && !error && (
+                <div className="discountSection">
+                  <p>Discount:</p>
+                  <span>{appliedCoupon}</span>
+                  <button
+                    className="removeButton"
+                    onClick={removeCouponHandler}
+                  >
+                    Remove
+                  </button>
+                  <span>- ₹{discountAmount}</span>
+                </div>
+              )}
+
+              {error && (
+                <div>
+                  <p>Discount:</p>
+                  <span>- ₹{discountAmount}</span>
+                </div>
+              )}
+
               <div>
                 <p>Shipping Charges:</p>
                 <span>₹{shippingCharges}</span>
               </div>
-              <div>
+              {/* <div>
                 <p>GST:</p>
                 <span>₹{tax}</span>
-              </div>
+              </div> */}
             </div>
 
             <div className="orderSummaryTotal">
@@ -121,6 +183,41 @@ const ConfirmOrder = () => {
               </p>
               <span>₹{totalPrice}</span>
             </div>
+
+            {!appliedCoupon && !error && (
+              <div className="couponInput">
+                <input
+                  type="text"
+                  placeholder="Enter coupon code"
+                  className="couponInputField"
+                  onChange={handleCouponChange}
+                />
+                <button
+                  className="applyCouponButton"
+                  onClick={applyCouponHandler}
+                >
+                  APPLY
+                </button>
+              </div>
+            )}
+
+            {error && (
+              <div className="couponInput">
+                <input
+                  type="text"
+                  placeholder="Enter coupon code"
+                  className="couponInputField"
+                  onChange={handleCouponChange}
+                />
+                <button
+                  className="applyCouponButton"
+                  onClick={applyCouponHandler}
+                >
+                  APPLY
+                </button>
+              </div>
+            )}
+
             <button onClick={() => checkoutHandler(totalPrice)}>
               Proceed To Payment
             </button>

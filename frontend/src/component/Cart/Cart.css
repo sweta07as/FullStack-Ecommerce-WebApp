@@ -98,11 +98,13 @@
 }
 
 .cartGrossProfitBox {
-  border-top: 3px solid rgb(128, 0, 57);
+  border-top: 2px solid #303030;
+  /* border-bottom: 1px solid rgb(128, 0, 57); */
   margin: 1vmax 4vmax;
   box-sizing: border-box;
-  padding: 2vmax 0;
+  padding: 1vmax 0;
   font: 600 1.2vmax "Roboto Slab";
+  color: #303030;
   display: flex;
   justify-content: space-between;
 }

@@ -58,7 +58,7 @@ const ProductDetails = ({ match }) => {
   };
 
   const decreaseQuantity = () => {
-    if (quantity <= 1) return;
+    if (quantity < 1) return; //changed
     const qty = quantity - 1;
     setQuantity(qty);
   };
@@ -145,7 +145,7 @@ const ProductDetails = ({ match }) => {
                     <button onClick={increaseQuantity}>+</button>
                   </div>
                   <button
-                    disabled={product.stock < 1 ? true : false}
+                    disabled={product.stock < 0 ? true : false}
                     onClick={addToCartHandler}
                   >
                     Add to Cart

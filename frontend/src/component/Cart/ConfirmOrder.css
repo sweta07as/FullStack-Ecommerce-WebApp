@@ -77,7 +77,7 @@
 }
 
 .orderSummary {
-  padding: 7vmax;
+  padding: 4vmax;
 }
 
 .orderSummary > p {
@@ -98,6 +98,54 @@
 }
 .orderSummary > div > div > span {
   color: rgba(0, 0, 0, 0.692);
+}
+
+.couponInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2vmax;
+}
+
+.couponInputField {
+  width: 250px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.applyCouponButton {
+  margin-left: 10px;
+  padding: 8px 16px;
+  background-color: #707070;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.applyCouponButton:hover {
+  background-color: #303030;
+}
+
+.discountSection {
+  display: flex;
+  align-items: center;
+}
+
+.removeButton {
+  background-color: #800034;
+  color: white;
+  padding: 5px 10px;
+  font: 300 1vmax "Roboto Slab";
+  border: none;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background-color: #500024;
 }
 
 .orderSummaryTotal {

@@ -41,6 +41,9 @@ import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import NotFound from "./component/layout/Not Found/NotFound";
 import PaymentSuccess from "./component/Cart/PaymentSuccess";
+import CouponList from "./component/Admin/CouponList.js";
+import NewCoupon from "./component/Admin/NewCoupon";
+import UpdateCoupon from "./component/Admin/UpdateCoupon";
 
 //removed .js from all of the above ones to make it look cool
 //but if you have error, please add it
@@ -169,6 +172,28 @@ function App() {
           path="/paymentsuccess"
           component={PaymentSuccess}
         />
+
+        <ProtectedRoute
+          exact
+          isAdmin={true}
+          path="/admin/coupons"
+          component={CouponList}
+        />
+
+        <ProtectedRoute
+          exact
+          isAdmin={true}
+          path="/admin/coupon"
+          component={NewCoupon}
+        />
+
+        <ProtectedRoute
+          exact
+          isAdmin={true}
+          path="/admin/coupon/:id"
+          component={UpdateCoupon}
+        />
+        
 
         <Route
           component={
