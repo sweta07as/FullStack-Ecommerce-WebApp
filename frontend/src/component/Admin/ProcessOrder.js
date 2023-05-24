@@ -134,7 +134,10 @@ const ProcessOrder = ({ history, match }) => {
                 </div>
                 <div className="confirmCartItems">
                   <Typography>Your Cart Items:</Typography>
-                  <div className="confirmCartItemsContainer">
+                  <div
+                    className="confirmCartItemsContainer"
+                    style={{ maxHeight: "6vmax" }}
+                  >
                     {order.orderItems &&
                       order.orderItems.map((item) => (
                         <div key={item.product}>
@@ -158,7 +161,7 @@ const ProcessOrder = ({ history, match }) => {
                 }}
               >
                 <form
-                  className="createProductForm"
+                  className="updateOrderForm"
                   onSubmit={updateOrderSubmitHandler}
                 >
                   <h1>Process Order</h1>

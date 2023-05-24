@@ -23,7 +23,7 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { createOrder, clearErrors } from "../../actions/orderAction";
 
 const Payment = ({ history }) => {
-  const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  // const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -36,17 +36,17 @@ const Payment = ({ history }) => {
   const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {
-    amount: Math.round(orderInfo.totalPrice * 100),
+    // amount: Math.round(orderInfo.totalPrice * 100),
   };
 
-  const order = {
-    shippingInfo,
-    orderItems: cartItems,
-    itemsPrice: orderInfo.subtotal,
-    taxPrice: orderInfo.tax,
-    shippingPrice: orderInfo.shippingCharges,
-    totalPrice: orderInfo.totalPrice,
-  };
+  // const order = {
+  //   shippingInfo,
+  //   orderItems: cartItems,
+  //   itemsPrice: orderInfo.subtotal,
+  //   taxPrice: orderInfo.tax,
+  //   shippingPrice: orderInfo.shippingCharges,
+  //   totalPrice: orderInfo.totalPrice,
+  // };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -92,12 +92,12 @@ const Payment = ({ history }) => {
         alert.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          order.paymentInfo = {
-            id: result.paymentIntent.id,
-            status: result.paymentIntent.status,
-          };
+          // order.paymentInfo = {
+            // id: result.paymentIntent.id,
+            // status: result.paymentIntent.status,
+          // };
 
-          dispatch(createOrder(order));
+          // dispatch(createOrder(order));
 
           history.push("/success");
         } else {
@@ -139,7 +139,7 @@ const Payment = ({ history }) => {
 
           <input
             type="submit"
-            value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
+            // value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
             ref={payBtn}
             className="paymentFormBtn"
           />

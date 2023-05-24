@@ -1,7 +1,43 @@
-.success{
-    height: 30vmax;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.paymentSuccess {
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.paymentSuccess > svg {
+  font-size: 7vmax;
+  color: rgb(128, 0, 57);
+}
+.paymentSuccess > p {
+  font-size: 2vmax;
+}
+.paymentSuccess > a {
+  background-color: rgb(51, 51, 51);
+  color: white;
+  border: none;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto Slab";
+  text-decoration: none;
+  margin: 2vmax;
+}
+
+@media screen and (max-width: 600px) {
+  .paymentSuccess > a {
+    padding: 3vw 6vw;
+    font: 400 4vw "Roboto Slab";
+    margin: 2vmax;
+  }
+
+  .paymentSuccess > svg {
+    font-size: 20vw;
+  }
+  .paymentSuccess > p {
+    margin: 2vmax;
+    font-size: 5vw;
+  }
 }

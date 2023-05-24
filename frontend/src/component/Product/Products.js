@@ -5,8 +5,8 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import ProductCard from "../Home/ProductCard";
 import Pagination from "react-js-pagination";
-import Slider from "@material-ui/core/Slider";
-import Typography from "@material-ui/core/Typography";
+// import Slider from "@material-ui/core/Slider";
+// import Typography from "@material-ui/core/Typography";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/Metadata";
 
@@ -74,7 +74,7 @@ const Products = ({ match }) => {
               ))}
           </div>
 
-          {keyword && (
+          {/* {keyword && (
             <div className="filterBox">
               <Typography>Price</Typography>
               <Slider
@@ -112,8 +112,8 @@ const Products = ({ match }) => {
                   max={5}
                 />
               </fieldset>
-            </div>
-          )}
+            </div> */}
+          {/* )} */}
 
           {resultPerPage < count && (
             <div className="paginationBox">

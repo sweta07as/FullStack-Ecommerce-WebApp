@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import Header from "./component/layout/Header/Header.js";
+import { useEffect } from "react";
+// import Header from "./component/layout/Header/Header.js";
 import Navbar from "./component/layout/Navbar/Navbar.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
@@ -14,7 +14,7 @@ import Search from "./component/Product/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
-import UserOptions from "./component/layout/Header/UserOptions.js";
+// import UserOptions from "./component/layout/Header/UserOptions.js";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
@@ -25,8 +25,8 @@ import ResetPassword from "./component/User/ResetPassword.js";
 import Cart from "./component/Cart/Cart.js";
 import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
-import axios from "axios";
-import Payment from "./component/Cart/Payment.js";
+// import axios from "axios";
+// import Payment from "./component/Cart/Payment.js";
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
 import MyOrders from "./component/Order/MyOrders.js";
 import OrderDetails from "./component/Order/OrderDetails.js";
@@ -49,7 +49,7 @@ import UpdateCoupon from "./component/Admin/UpdateCoupon";
 //but if you have error, please add it
 
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+  // const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     WebFont.load({

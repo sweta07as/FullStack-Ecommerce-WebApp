@@ -15,7 +15,7 @@ const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -60,6 +60,7 @@ const ConfirmOrder = () => {
     }
   }, [success, coupon, subtotal]);
 
+  
   const checkoutHandler = async (amount) => {
     const {
       data: { key },
@@ -95,6 +96,16 @@ const ConfirmOrder = () => {
 
     const razor = new window.Razorpay(options);
     razor.open();
+
+    
+    const data = {
+      subtotal,
+      shippingCharges,
+      // tax,
+      totalPrice,
+    };
+
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));
   };
 
   return (

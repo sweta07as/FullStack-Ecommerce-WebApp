@@ -53,7 +53,7 @@ exports.paymentVerification = asyncError(async (req, res) => {
 
   } else {
     res.status(400).json({
-      success: false
+      success: false,
     });
   }
 });

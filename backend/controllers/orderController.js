@@ -1,4 +1,4 @@
-const Order = require("../models/orderModel");
+ const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/ErrorHandler");
 const asyncError = require("../middleware/asyncError");

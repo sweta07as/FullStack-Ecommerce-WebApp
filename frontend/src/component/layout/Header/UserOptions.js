@@ -76,12 +76,12 @@ const UserOptions = ({ user }) => {
         open={open}
         direction="down"
         className="speedDial"
-        icon={
-          <img
-            className="speedDialIcon"
-            src={profile}
-          />
-        }
+        // icon={
+        //   <img
+        //     className="speedDialIcon"
+        //     src={profile}
+        //   />
+        // }
       >
         {options.map((item) => (
           <SpeedDialAction

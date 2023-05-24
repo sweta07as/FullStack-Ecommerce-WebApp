@@ -8,6 +8,10 @@ const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
+const dotenv = require("dotenv");
+
+const messagebird = require("messagebird").initClient(process.env.MESSAGEBIRD_API_KEY);
+
 //Register a User
 exports.registerUser = asyncError(async (req, res, next) => {
   // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
@@ -279,14 +283,32 @@ exports.deleteUser = asyncError(async (req, res, next) => {
   });
 });
 
-//Send OTP to user
-// const userLogin = asyncError(async (req, res, next) => {
-//   //not static yet
-//   res.status(200).send({
-//     message: "OTP Sent Successfully",
-//   });
-// });
+//Send Mobile number OTP to user
 
-// exports.otpController = {
-//   userLogin
-// };
+// exports.userLogin = asyncError(async (req, res, next) => {
+//   const {mobileNumber} = req.body;
+//   const mobile = "+91"+mobileNumber;
+
+//   var params = {
+//     template: "Your Login OTP is %token",
+//     timeout: 300,
+//   };
+
+//   messagebird.verify.create(mobile, params, 
+//     (err, response) => {
+//     if(err){
+//       console.log("OTP Send Error:", err);
+//       res.status(200).json({
+//         success: "false",
+//         message: "Unable to send OTP",
+//       });
+//     }
+
+//     console.log("OTP Send Response:", response);
+//      res.status(200).json({
+//        success: "true",
+//        message: "OTP Sent Successfully",
+//        id: response.id
+//      });
+//   })
+// });
