@@ -50,15 +50,22 @@ const UsersList = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted, message]);
 
   const columns = [
-    { field: "id", headerName: "User ID", minWidth: 180, flex: 0.2 },
+    { field: "id", headerName: "User ID", minWidth: 250, flex: 0.2 },
 
     { field: "email", headerName: "Email", minWidth: 200, flex: 0.3 },
+
+    {
+      field: "mobile",
+      headerName: "Mobile",
+      minWidth: 100,
+      flex: 0.2,
+    },
 
     {
       field: "name",
       headerName: "Name",
       minWidth: 150,
-      flex: 0.25,
+      flex: 0.2,
     },
 
     {
@@ -110,6 +117,7 @@ const UsersList = ({ history }) => {
         role: item.role,
         email: item.email,
         name: item.name,
+        mobile: item.mobile,
       });
     });
 

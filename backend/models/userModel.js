@@ -33,6 +33,17 @@ const userSchema = new mongoose.Schema({
   //     required: true,
   //   },
   // },
+  mobile: {
+    type: Number,
+    unique: true,
+    required: [true, "Please enter your mobile number"],
+    validate: [
+      {
+        validator: (value) => /^\d{10}$/.test(value.toString()),
+        message: "Mobile number should be of 10 digits.",
+      },
+    ],
+  },
   role: {
     type: String,
     default: "user",

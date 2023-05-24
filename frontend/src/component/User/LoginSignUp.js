@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
+import PhoneIcon from "@material-ui/icons/Phone";
+
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
@@ -29,9 +31,10 @@ const LoginSignUp = ({ history, location }) => {
     name: "",
     email: "",
     password: "",
+    mobile: "",
   });
 
-  const { name, email, password } = user;
+  const { name, email, password, mobile } = user;
 
   // const [avatar, setAvatar] = useState();
   // const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
@@ -50,6 +53,7 @@ const LoginSignUp = ({ history, location }) => {
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("password", password);
+    myForm.set("mobile", mobile);
     // myForm.set("avatar", avatar);
     dispatch(register(myForm));
   };
@@ -173,6 +177,18 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
 
+                <div className="signUpMobile">
+                  <PhoneIcon />
+                  <input
+                    type="mobile"
+                    placeholder="Mobile Number"
+                    required
+                    name="mobile"
+                    value={mobile}
+                    onChange={registerDataChange}
+                  />
+                </div>
+                
                 <div className="signUpPassword">
                   <LockOpenIcon />
                   <input

@@ -14,6 +14,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import PersonIcon from "@material-ui/icons/Person";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import Loader from "../layout/Loader/Loader";
+import PhoneIcon from "@material-ui/icons/Phone";
 
 const UpdateUser = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const UpdateUser = ({ history, match }) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
   const [role, setRole] = useState("");
 
   const userId = match.params.id;
@@ -40,6 +42,7 @@ const UpdateUser = ({ history, match }) => {
       setName(user.name);
       setEmail(user.email);
       setRole(user.role);
+      setMobile(user.mobile);
     }
 
     if (error) {
@@ -67,6 +70,7 @@ const UpdateUser = ({ history, match }) => {
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("role", role);
+    myForm.set("mobile", mobile);
 
     dispatch(updateUser(userId, myForm));
   };
@@ -105,6 +109,17 @@ const UpdateUser = ({ history, match }) => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <PhoneIcon />
+                <input
+                  type="mobile"
+                  placeholder="Mobile"
+                  required
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
                 />
               </div>
 
