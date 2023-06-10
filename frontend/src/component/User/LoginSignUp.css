@@ -5,10 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(231, 231, 231);
+  background-color: rgba(255, 255, 255);
   position: fixed;
-  top: 0%;
+  top: 20%;
   left: 0;
+  overflow: hidden;
 }
 
 .LoginSignUpBox {
@@ -24,7 +25,8 @@
 }
 .login_signUp_toggle > p {
   color: rgba(0, 0, 0, 0.678);
-  font: 300 1vmax "Roboto Slab";
+  font: 600 1.2vmax "Roboto Slab";
+  letter-spacing: 0.3vmax;
   transition: all 0.5s;
   cursor: pointer;
   display: grid;
@@ -51,7 +53,7 @@
   margin: auto;
   padding: 2vmax;
   justify-content: space-evenly;
-  height: 70%;
+  height: 80%;
   transition: all 0.5s;
 }
 
@@ -71,7 +73,8 @@
   padding-right: 1vmax;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.267);
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
   font: 300 0.9vmax;
   outline: none;
@@ -90,7 +93,7 @@
   text-decoration: none;
   align-self: flex-end;
   transition: all 0.5s;
-  font: 500 0.8vmax "Gill Sans";
+  font: 500 0.8vmax "Roboto Slab";
 }
 
 .loginForm > a:hover {
@@ -162,6 +165,7 @@
 @media screen and (max-width: 600px) {
   .LoginSignUpContainer {
     background-color: white;
+    top: 0%;
   }
   .LoginSignUpBox {
     width: 100vw;

@@ -1,7 +1,7 @@
 .myOrdersPage {
   width: 100vw;
   max-width: 100%;
-  padding:5vmax 8vmax;
+  padding:0vmax 8vmax;
   box-sizing: border-box;
   background-color: rgb(235, 235, 235);
   /* position: fixed; */

@@ -45,6 +45,13 @@ import CouponList from "./component/Admin/CouponList.js";
 import NewCoupon from "./component/Admin/NewCoupon";
 import UpdateCoupon from "./component/Admin/UpdateCoupon";
 
+import Contact from "./component/layout/Contact/Contact.js";
+import About from "./component/layout/About/About.js";
+import Return from "./component/layout/Policies/Return/Return";
+import Privacy from "./component/layout/Policies/Privacy/Privacy";
+import Ship from "./component/layout/Policies/Ship/Ship";
+import TnC from "./component/layout/Policies/TnC/TnC";
+
 //removed .js from all of the above ones to make it look cool
 //but if you have error, please add it
 
@@ -79,6 +86,13 @@ function App() {
         <Route path="/products/:keyword" component={Products} />
 
         <Route exact path="/search" component={Search} />
+
+        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/privacy" component={Privacy} />
+        <Route exact path="/return" component={Return} />
+        <Route exact path="/ship" component={Ship} />
+        <Route exact path="/tnc" component={TnC} />
 
         <ProtectedRoute exact path="/account" component={Profile} />
         <ProtectedRoute exact path="/me/update" component={UpdateProfile} />

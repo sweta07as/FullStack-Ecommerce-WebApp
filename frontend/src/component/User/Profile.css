@@ -8,7 +8,9 @@
   top: 0%;
   left: 0%;
   background-color: #ebebeb;
+  /* outline: 0.2vmax solid #cf3838; */
 }
+
 
 .profileContainer > div {
   display: flex;
@@ -102,11 +104,15 @@
 @media screen and (max-width: 600px) {
   .profileContainer {
     flex-direction: column;
+    padding: 0;
+    border-color: #ebebeb;
+    border-style: solid;
+    border-width: 10vmax 2vmax 12vmax 2vmax;
   }
 
   .profileContainer > div:first-child > h1 {
     font: 500 3.2vmax "Roboto Slab";
-    transform: translateY(-2vmax);
+    transform: translateY(-3vmax);
   }
 
   .profileContainer > div:first-child > a {
@@ -115,12 +121,16 @@
   }
 
   .profileContainer > div:last-child {
-    text-align: center;
-    align-items: center;
+    text-align: justify;
+    align-items:flex-start;
+  }
+
+  .profileContainer > div:last-child > div {
+    margin-bottom: 2vmax;
   }
 
   .profileContainer > div:last-child > div > h4 {
-    font: 400 2.5vmax "Roboto Slab";
+    font: 400 2vmax "Roboto Slab";
   }
 
   .profileContainer > div:last-child > div > p {
@@ -133,4 +143,5 @@
     padding: 1vmax;
     margin: 2vmax 0;
   }
+
 }

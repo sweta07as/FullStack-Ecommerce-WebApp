@@ -127,6 +127,7 @@
 @media screen and (max-width: 600px) {
   .cartPage {
     padding: 0;
+    margin-bottom: 20vmax;
     min-height: 60vh;
   }
 
@@ -146,12 +147,12 @@
   }
 
   .cartInput > button {
-    padding: 1.5vmax;
+    padding: 1vmax;
   }
 
   .cartInput > input {
-    width: 2vmax;
-    padding: 1.5vmax;
+    width: 3vmax;
+    padding: 0.5vmax;
     font: 400 1.8vmax "Roboto Slab";
   }
 
@@ -168,7 +169,7 @@
 
   .cartGrossProfitBox {
     padding: 2vmax;
-    font: 300 2vmax "Roboto Slab";
+    font: 800 2vmax "Roboto Slab";
   }
 
   .checkOutBtn > button {

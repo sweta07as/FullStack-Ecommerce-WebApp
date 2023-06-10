@@ -5,7 +5,7 @@
   padding: 1vmax;
   color: rgba(0, 0, 0, 0.678);
   font: 600 1vmax;
-  font-family: Arial, sans-serif;
+  font-family: Roboto Slab;
   text-align: center;
 }
 
@@ -95,6 +95,19 @@
 }
 
 @media screen and (max-width: 600px) {
+
+  .productsHeading {
+  margin: 2vmax auto;
+  width: 35vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  padding: 1vmax;
+  color: rgba(0, 0, 0, 0.678);
+  font-size: 2.4vmax;
+  font-family: Roboto Slab;
+  text-align: center;
+}
+
+
   .filterBox {
     width: 20vmax;
     position: static;

@@ -28,16 +28,19 @@ const Footer = () => {
           {/* <div className="midFooter-a"> */}
           <a href="/about">About</a>
           <a href="/craft">Craft</a>
-          <a href="/contact">Contact Us</a>
+          <a href="/story">Story</a>
+          <a href="/contact">Contact</a>
           {/* </div> */}
         </div>
 
         <div className="rightFooter">
           <h4>SUPPORT</h4>
           {/* <div className="rightFooter-a"> */}
-          <a href="/policy">Privacy Policy</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/return">Return Policy</a>
+          <a href="/ship">Shipping Policy</a>
           <a href="/tnc">Terms Of Service</a>
-          <a href="/help">Help Centre</a>
+          {/* <a href="/help">Help Centre</a> */}
           {/* </div> */}
         </div>
       </div>
