@@ -35,6 +35,8 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
+    "start:production": "npm run build && npm run start:prod",
+    "start:prod": "cross-env NODE_ENV=production node server",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
