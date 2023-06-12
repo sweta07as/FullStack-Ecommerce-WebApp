@@ -1,4 +1,4 @@
-const ErrorHandler = require("../utils/ErrorHandler");
+const ErrorHandler = require("../utils/errorHandler.js");
 const asyncError = require("../middleware/asyncError");
 
 const User = require("../models/userModel");
@@ -10,7 +10,9 @@ const cloudinary = require("cloudinary");
 
 const dotenv = require("dotenv");
 
-const messagebird = require("messagebird").initClient(process.env.MESSAGEBIRD_API_KEY);
+const messagebird = require("messagebird").initClient(
+  process.env.MESSAGEBIRD_API_KEY
+);
 
 //Register a User
 exports.registerUser = asyncError(async (req, res, next) => {
@@ -297,7 +299,7 @@ exports.deleteUser = asyncError(async (req, res, next) => {
 //     timeout: 300,
 //   };
 
-//   messagebird.verify.create(mobile, params, 
+//   messagebird.verify.create(mobile, params,
 //     (err, response) => {
 //     if(err){
 //       console.log("OTP Send Error:", err);

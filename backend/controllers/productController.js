@@ -1,5 +1,5 @@
 const Product = require("../models/productModel");
-const ErrorHandler = require("../utils/ErrorHandler");
+const ErrorHandler = require("../utils/errorHandler.js");
 const asyncError = require("../middleware/asyncError");
 const ApiFeatures = require("../utils/apifeatures");
 const cloudinary = require("cloudinary");
@@ -61,7 +61,6 @@ exports.createProduct = asyncError(async (req, res, next) => {
       public_id: result.public_id,
       url: result.secure_url,
     });
-
   }
 
   req.body.images = imagesLinks;
@@ -92,7 +91,7 @@ exports.updateProduct = asyncError(async (req, res, next) => {
     images = req.body.images;
   }
 
-  if(images !== undefined){
+  if (images !== undefined) {
     //Deleting Images from Cloudinary
     for (let i = 0; i < product.images.length; i++) {
       await cloudinary.v2.uploader.destroy(product.images[i].public_id);
@@ -136,7 +135,7 @@ exports.deleteProduct = asyncError(async (req, res, next) => {
 
   //Deleting Images from Cloudinary
   for (let i = 0; i < product.images.length; i++) {
-    await cloudinary.v2.uploader.destroy(product.images[i].public_id);    
+    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
   }
 
   await product.remove();
@@ -238,9 +237,9 @@ exports.deleteReview = asyncError(async (req, res, next) => {
 
   let ratings = 0;
 
-  if(reviews.length === 0){
+  if (reviews.length === 0) {
     ratings = 0;
-  }else{
+  } else {
     ratings = avg / reviews.length;
   }
 

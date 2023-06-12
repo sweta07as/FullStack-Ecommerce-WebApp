@@ -1,5 +1,5 @@
 const Coupon = require("../models/couponModel");
-const ErrorHandler = require("../utils/ErrorHandler");
+const ErrorHandler = require("../utils/errorHandler.js");
 const asyncError = require("../middleware/asyncError");
 
 exports.createCoupon = asyncError(async (req, res, next) => {
